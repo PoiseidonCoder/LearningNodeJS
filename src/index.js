@@ -12,9 +12,12 @@ const db = require('./config/db');
 // Kết nối tới database
 db.connect();
 
+
+// Cấu hình cho phép nhận dữ liệu từ form dưới dạng JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Định nghĩa các route cho ứng dụng
 route(app);
 
 // HTTP logger để hiển thị thông tin chi tiết về các request
@@ -32,11 +35,6 @@ app.engine(
 app.set('view engine', 'hbs');
 // Thiết lập đường dẫn đến thư mục views
 app.set('views', path.join(__dirname, 'resources', 'views'));
-
-// Định nghĩa route cho trang chủ
-app.get('/', (req, res) => {
-    res.render('home', { title: 'Home Page' }); // Truyền thêm biến title
-});
 
 // Start the server để server lắng nghe tại cổng chỉ định
 app.listen(port, () => {
