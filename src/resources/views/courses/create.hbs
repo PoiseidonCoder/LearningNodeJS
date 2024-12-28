@@ -1,0 +1,24 @@
+<div class="mt-4">
+  <h3>
+    Đăng khóa học
+  </h3>
+  <form method="POST" action="/courses/store">
+    <div class="mb-3">
+      <label for="name" class="form-label">Tên</label>
+      <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="body" class="form-label">Mô tả</label>
+      <input type="text" name="body" class="form-control" id="body" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="level" class="form-label">Trình độ</label>
+      <input type="text" name="level" class="form-control" id="level" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="videoId" class="form-label">VideoId</label>
+      <input type="text" name="videoId" class="form-control" id="videoId" aria-describedby="emailHelp">
+    </div>
+    <button type="submit" class="btn btn-primary">Thêm khóa học</button>
+  </form>
+</div>
