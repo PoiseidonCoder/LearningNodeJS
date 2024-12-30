@@ -7,5 +7,7 @@ const Course = new Schema({
   image: {type: String},
   videoId: {type: String, required: true},
   level: {type: String},
-},{timestamps:true})
+  // slug : name là để lấy name cho slug
+  slug: { type: String, slug: "name", unique: true },
+},{timestamps: true})
 module.exports = mongoose.model('Course', Course);

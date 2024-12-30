@@ -17,8 +17,7 @@ db.connect();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Định nghĩa các route cho ứng dụng
-route(app);
+
 
 // HTTP logger để hiển thị thông tin chi tiết về các request
 app.use(morgan('combined'));
@@ -28,6 +27,9 @@ app.engine(
     'hbs',
     engine({
         extname: '.hbs', // Đuôi file mặc định
+        helpers:{
+            sum: (a,b) => a+b,
+        }
     }),
 );
 
@@ -35,8 +37,10 @@ app.engine(
 app.set('view engine', 'hbs');
 // Thiết lập đường dẫn đến thư mục views
 app.set('views', path.join(__dirname, 'resources', 'views'));
-
+// Định nghĩa các route cho ứng dụng
+route(app);
 // Start the server để server lắng nghe tại cổng chỉ định
+
 app.listen(port, () => {
     console.log(`Server đang chạy tại http://localhost:${port}`);
 });

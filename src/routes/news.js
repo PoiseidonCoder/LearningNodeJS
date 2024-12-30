@@ -1,11 +1,11 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const newsController = require('../app/controllers/NewsController');
+const newsController = require("../app/controllers/NewsController");
 
 // newsController.index
-router.use('/:slug', newsController.show);
+router.get("/:slug", newsController.show);
 //Phải để dưới cùng vì nếu để trên sẽ bị kiểm tra trước và không thể vào được các route khác
-router.use('/', newsController.index);
+router.get("/", newsController.index);
 
 module.exports = router;
