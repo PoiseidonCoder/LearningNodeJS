@@ -1,28 +1,41 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Level</th>
-      <th scope="col " colspan="2">Created At</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each courses}}
-    <tr>
-      <th scope="row">{{sum @index 1}}</th>
-      <td>{{this.name}}</td>
-      <td>{{this.level}}</td>
-      <td>{{this.createdAt}}</td>
-      <td>
-        <a href="/courses/{{this._id}}/edit" class="btn btn-link">Sửa</a>
-        <a href="" class="btn btn-link" data-id="{{this._id}}" data-bs-toggle="modal"
-          data-bs-target="#delete-course-modal">Xóa</a>
-      </td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
+<div class="mt-4">
+  <div class="d-flex justify-content-between align-items-center">
+    <h3 class="d-block">
+      Khóa học của tôi
+    </h3>
+    <a class="d-block btn btn-link" href="/me/trash/courses">Thùng rác</a>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Level</th>
+        <th scope="col " colspan="2">Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each courses}}
+      <tr>
+        <th scope="row">{{sum @index 1}}</th>
+        <td>{{this.name}}</td>
+        <td>{{this.level}}</td>
+        <td>{{this.createdAt}}</td>
+        <td>
+          <a href="/courses/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+          <a href="" class="btn btn-link" data-id="{{this._id}}" data-bs-toggle="modal"
+            data-bs-target="#delete-course-modal">Xóa</a>
+        </td>
+      </tr>
+      {{else}}
+      <tr>
+        <td colspan="5" class="text-center">Không có khóa học nào <a href="/courses/create">Tạo khóa học</a></td>
+
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
 
 {{!-- Confirm delete --}}
 <div id="delete-course-modal" class="modal" tabindex="-1">
