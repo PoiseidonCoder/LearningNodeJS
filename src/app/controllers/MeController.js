@@ -8,11 +8,13 @@ class MeController {
       Course.find({}),
       Course.countDocumentsWithDeleted({ deleted: true }),
     ])
-      .then(([deletedCount, courses]) =>
-        res.render("me/stored-courses", {
+      .then(([courses, deletedCount]) => {
+        console.log("đã xóa", deletedCount);
+        return res.render("me/stored-courses", {
+          deletedCount,
           courses: multipleMongooseToObject(courses),
-        })
-      )
+        });
+      })
       .catch(next);
   }
   trashCourses(req, res, next) {
